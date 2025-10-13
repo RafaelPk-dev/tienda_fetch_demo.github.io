@@ -952,41 +952,47 @@ button.btn-eliminar-todo[disabled] {
     border: solid .2px var(--color-blanco);
   }
 
-  /* Menú lateral con efecto blur */
-
+     /* Menú lateral con efecto blur */
+  /*Contenedor interno del menú mantiene padding original pero más compacto */
   .menu-h-container,
-.menuhcontainer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-items: stretch;      /* que los botones ocupen el ancho interno, no fuera */
-  justify-content: flex-start;
-  padding: 1rem 0.8rem;      /* separación interna consistente con tu diseño */
-  box-sizing: border-box;
-}
-
+  .menuhcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;      /* que los botones ocupen el ancho interno, no fuera */
+    justify-content: flex-start;
+    padding: 1rem 0.8rem;      /* vuelta al padding que preferías */
+    box-sizing: border-box;
+  }
+  
+  /* Panel del menú: compacto, con scroll interno, mantiene alineación centrada */
   .menuHamb,
   .menuHamb-activo {
-    width: 100%;
-    max-height: 100vh;
+    width: min(92vw, 420px);      /* responsive: hasta 92vw o 420px máximo */
+    max-height: 100vh;            /* conserva tu límite de altura original */
     position: fixed;
     top: 0;
-    left: 0;
-    z-index: 998; /* Menor que notificaciones */
+    left: 0;                      /* conservamos la posición original a la izquierda */
+    z-index: 998;                 /* Menor que notificaciones (igual que antes) */
     background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(0.2rem); 
-    display: none; /* Oculto por defecto */
+    backdrop-filter: blur(0.2rem);
+    display: none;                /* Oculto por defecto */
     flex-direction: column;
-    align-items: center;
+    align-items: center;          /* volvemos a centrar como tenías antes */
     justify-content: flex-start;
-    padding: 1rem;
+    padding: 1rem;                /* igual que antes */
     transition: all 0.3s ease;
+    overflow-y: auto;             /* habilita scroll interno si hay más items */
+    
+    box-sizing: border-box;
+    border-radius: 0;             /* sin redondeo para respetar diseño original */
   }
-
+  
+  /* Mostrar solo cuando está activo (tu lógica sigue igual) */
   .menuHamb-activo {
-    display: flex; /* Solo se muestra si está activo */
-  }
+    display: flex;
+}
 
   .boton-menu,
   .boton-menu-a {
@@ -1081,6 +1087,7 @@ button.btn-eliminar-todo[disabled] {
     box-sizing: border-box;
   }
 }
+
 
 
 
