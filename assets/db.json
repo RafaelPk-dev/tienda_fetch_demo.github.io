@@ -1,0 +1,28 @@
+{
+    "imagenes" :[
+        {
+            "id":1,
+            "Titulo":"imagen1",
+            "filename":"25 3423sin título_20250220115806.png",
+            "src":"./25 3423sin título_20250220115806.png"
+        },
+        {
+            "id":2,
+            "Titulo":"imagen2",
+            "filename":"35 sin título_20250320222100.png",
+            "src":"./35 sin título_20250320222100.png"
+        },
+        {
+            "id":3,
+            "Titulo":"imagen3",
+            "filename":"37 sin título_20250322164214.png",
+            "src":"./37 sin título_20250322164214.png"
+        },
+        {
+            "id":4,
+            "Titulo":"imagen4",
+            "filename":"Clothes 22.png",
+            "src":"./Clothes 22.png"
+        }
+    ]
+}
