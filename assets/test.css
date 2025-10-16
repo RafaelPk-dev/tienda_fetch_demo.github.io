@@ -646,7 +646,7 @@ button.btn-eliminar-todo[disabled] {
 /* Tarjeta ampliada */
 .card-ampliada {
   width: 55%;
-  max-width: 320px;
+  max-width: 420px;
   background: var(--color-blanco);
   border-radius: 20px;
   box-shadow: 0 12px 30px rgba(2,6,23,0.28);
@@ -1602,7 +1602,6 @@ button.btn-eliminar-todo[disabled] {
 .card-ampliada {
   background: var(--color-blanco, #fff);
   color: var(--color-negro, #000);
-  max-width: min(720px, 96vw);
   width: 100%;
   border-radius: 12px;
   padding: 1.1rem;
@@ -1624,6 +1623,7 @@ button.btn-eliminar-todo[disabled] {
 /* ===========================
    Fin de archivo
    =========================== */
+
 
 
 
