@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <link rel="shortcut icon" href="./assets/48c3d934dc4f7e2d494a807e4aa5d5cc-ConvertImage.ico" type="image/x-icon">
+        <title>galeria_FEtch</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='./assets/test.css'>
+    </head>
+<body id="deseo">
+<div class="wrapper1">
+    <aside class="menuHamb">
+        <div class="menu-h-container">
+                <h2>RFE_STORE</h2>
+        
+        <button class="boton-menu-a">...</button>
+
+    
+            <nav class="header_nav" >
+                            
+                        <ul>
+                            <li>
+                                <a class="boton-carrito" href="./index.html">Volver a la tienda </a>
+                            </li>
+
+                            <li>
+                                    <a class="boton-carrito" href="./Carrito.html">Carrito <span class="numerito">0</span></a>
+                            </li>
+                        </ul>    
+                        
+            </nav>
+        <footer class="f-menu">
+        <p><small>
+            design by RfeP
+        </small>
+        </p>
+    </footer>
+        </div>
+        
+    </aside>
+        
+    <main class="main-container">
+
+        <button class="boton-menu">></button>
+        
+        <h1>Lista de Deseos</h1>
+
+        <section class="carrito wishlist-section">
+                <article class="carrito-productos wishlist-form">
+
+                <div class="carrito-producto-nombre">
+                    <small>Solicitud:</small>
+                    <h5>
+                    <input id="wishlistTitle" class="wishlist-input" type="text" placeholder="Nombre de la solicitud">
+                    </h5>
+                </div>
+
+                <div class="carrito-producto-cantidad">
+                    <small>DESCRIPCIÓN:</small>
+                    <p>
+                    <textarea id="wishlistDesc" class="wishlist-textarea" rows="3" placeholder="Describe el producto que solicitas (modelo, color, cantidad...)"></textarea>
+                    </p>
+                </div>
+
+                <div class="wishlist-actions">
+                    <button class="btn-comprar boton-accion btn-enviar" id="sendWishlist">Enviar solicitud</button>
+                </div>
+                </article>
+            </section>
+        <div id="contenedor-Carrito">
+                
+                
+        </div>
+    </main>
+
+    
+
+</div>
+    
+    <script  src="./SRC/JSfunctions/MainStripeModule.js" type="module"></script>
+</body>
+</html>
