@@ -140,7 +140,7 @@ export const activarVistaAmpliada = (selectorTarjeta, productos) => {
     boton.id = producto.Id;
 
     const icono = DOM.d.createElement("img");
-    icono.src = "/assets/shopping-cart.svg"; // ruta a tu icono
+    icono.src = "/PORTFOLIO/proyect1/assets/sale_basket_cart_ecommerce_on_buy_shop_trolley_bag_shopping_icon_266849.svg"; // ruta a tu icono
     icono.alt = "Agregar al carrito";
     icono.classList.add("icono-boton");
 
@@ -247,6 +247,7 @@ export const renderTopProductos = (rankingArray = null) => {
     const target = DOM.mensaje?.parentNode || DOM.mainContainer || DOM.main || DOM.d.body;
     target.insertBefore(wrapper, DOM.mensaje || target.firstChild);
 };
+
 
 
 
