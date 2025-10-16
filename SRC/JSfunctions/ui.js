@@ -98,7 +98,7 @@ export const productoFiltro = (productos, selectorBoton) => {
 let vistaAmpliadaInicializada = false;
 
 export const activarVistaAmpliada = (selectorTarjeta, productos) => {
-    if (window.innerWidth <= 1024 || vistaAmpliadaInicializada) return;
+    if (window.innerWidth <= 1024 || vistaAmpliadaInicializada);
     vistaAmpliadaInicializada = true;
 
     DOM.d.addEventListener("click", (e) => {
@@ -247,5 +247,6 @@ export const renderTopProductos = (rankingArray = null) => {
     const target = DOM.mensaje?.parentNode || DOM.mainContainer || DOM.main || DOM.d.body;
     target.insertBefore(wrapper, DOM.mensaje || target.firstChild);
 };
+
 
 
