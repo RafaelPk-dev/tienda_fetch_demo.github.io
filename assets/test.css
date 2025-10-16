@@ -1,0 +1,1636 @@
+:root {
+  --color-primario: #2c3e50;
+  --color-secundario: #7f8c8d;
+  --color-acento: #e74c3c;
+  --color-fondo: #ecf0f1;
+  --color-blanco: #ffffff;
+  --color-negro: #000000;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    margin: 12px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-primario);
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8vh;
+}
+
+p {
+  position: relative;
+}
+
+.titulo {
+  text-align: center;
+  font-size: 2rem;
+  display: inline-block;
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
+}
+
+
+.wrapper,
+.wrapper1 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--color-fondo);
+}
+
+.boton-menu,
+.boton-menu-a {
+  height: 100%;
+  padding: .4em;
+  font-size: 1.5em;
+  z-index: 100;
+  border: 0;
+  background: var(--color-blanco);
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.boton-menu {
+  width: 2%;
+  position: fixed;
+  right: 78.5vw;
+}
+
+.boton-menu-a {
+  width: 10%;
+  position: fixed;
+  right: .1vw;
+}
+
+.boton-menu:hover,
+.boton-menu-a:hover,
+li:hover,
+.numerito:hover {
+  background: var(--color-fondo);
+}
+
+
+.overlay-blur-aside {
+  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0.6rem);
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuHamb,
+.menuHamb-activo {
+  width: 15%;
+  height: 100%;
+  position: fixed;
+  right: 79.5vw;
+  display: flex;
+  flex-direction: row;
+  transition: all .3s ease;
+}
+.menu-h-container{
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuHamb {
+  background: rgba(255, 255, 255, 0.123);
+  backdrop-filter: blur(0.4rem);
+  opacity: 0;
+}
+
+.menuHamb-activo {
+  background-color: var(--color-blanco);
+  translate: 14vw;
+  opacity: 100%;
+  z-index: 200;
+}
+
+.header_nav {
+  height: auto;
+  display: flex;
+}
+
+li {
+  padding: 3vh;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.boton-navegador,
+.boton-carrito {
+  border: 0;
+  background: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.numerito {
+  padding: .5rem;
+  background: var(--color-fondo);
+  border-radius: 20%;
+  transition: all .3s ease;
+}
+
+.f-menu {
+  width: 100%;
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+.container,
+.main-container {
+  width: 60%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 2vw;
+  overflow: hidden;
+  background: var(--color-blanco);
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .5vw;
+}
+
+/* Tarjeta: base minimalista, bordes suaves y profundidad sutil */
+.content {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+  color: var(--color-primario);
+  border: 1px solid rgba(255,255,255,0.04); /* borde muy sutil */
+  border-radius: 16px;                       /* bordes ligeramente redondeados */
+  padding: 0.8rem;                           /* espacio interior consistente */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  cursor: pointer;
+  overflow: hidden;
+  transform: translateZ(0);                  /* evitar subpixel artifacts */
+  transition: transform 260ms cubic-bezier(.2,.9,.25,1), 
+              box-shadow 260ms cubic-bezier(.2,.9,.25,1),
+              border-color 200ms ease;
+}
+
+/* Elevación al pasar el ratón / foco táctil */
+.content:hover,
+.content:focus-within {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.25);
+  border-color: rgba(255,0,79,0.12); /* ligero acento al pasar por encima */
+}
+
+/* Imagen: ocupando la parte superior con cover y ratio controlado */
+.img {
+  width: 100%;
+  height: 160px;            /* ratio consistente para todas las tarjetas */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
+}
+
+/* Contenido inferior: disposición vertical, separación y texto */
+.tarjeta-Costo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0;
+}
+
+/* Título y subtítulo dentro de la tarjeta */
+.tarjeta-Costo .titulo-producto,
+.tarjeta-Costo h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primario);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Precio pequeño, destacado con acento */
+.tarjeta-Costo .precio {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-acento);
+  margin-top: 0.25rem;
+}
+
+/* Botón añadir: minimalista, borde fino y micro-interacción */
+.add-card {
+  align-self: start;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  color: var(--color-primario);
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: none;
+}
+
+/* Hover del botón: acento y pequeño lift */
+.add-card:hover,
+.add-card:active {
+  background: linear-gradient(90deg, var(--color-acento), rgba(255,0,79,0.7));
+  color: var(--color-negro);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255,0,79,0.12);
+  border-color: var(--color-acento);
+}
+
+
+
+.contenedor-notificaciones {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.notificacion {
+  pointer-events: auto;
+  width: 14rem;
+  min-height: 3.6rem;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.45rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  animation: fadeIn 0.28s ease both;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+.notif-img,
+.imgN {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: 0 0 3.2rem;
+  display: grid;
+  place-items: center;
+}
+
+.notif-img img,
+.imgN {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto más limpio y legible */
+.notif-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.notif-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notif-txt {
+  font-size: 0.78rem;
+  color:colo;
+  line-height: 1.18;
+  max-height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* Botón cerrar discreto */
+.notif-clos {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  border: none;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.notif-close:hover { transform: translateY(-2px); background: rgba(255,255,255,0.03); color: var(--color-acento); }
+
+/* Mantener tu animación original (solo ajuste de tiempos) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.carrito-vacio {
+  display: none;
+}
+
+/*CARRITO */
+/* Contenedor principal del carrito (sobrio pero con profundidad) */
+.carrito {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Título del carrito */
+.carrito-text {
+  font-size: 1.3rem;
+  color: var(--color-primario);
+  font-weight: 600;
+  margin: 0;
+  padding: 0.25rem 0;
+}
+
+/* Item: tarjeta ligera con fondo distinguible */
+.carrito-productos {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 0.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.025);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Imagen del producto */
+.carrito-img {
+  width: 5.2rem;
+  height: 5.2rem;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Información del producto */
+.carrito-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+.carrito-detalle .nombre {
+  font-size: 0.98rem;
+  color: var(--color-primario);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.carrito-detalle .meta {
+  font-size: 0.88rem;
+  color: var(--color-secundario);
+}
+
+/* Controles y botones alineados a la derecha (estética moderna) */
+.carrito-acciones {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 160px;
+  /* apariencia de panel de acciones */
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+
+/* Botones (ya aceptados) se mantienen; micro ajuste para separación */
+.carrito-producto-botones .boton-accion,
+.carrito-producto-botones .eliminacionC,
+.btn-comprar,
+.btn-eliminar {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--color-acento-alt);
+  color: var(--color-negro);
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+  box-shadow: none;
+}
+
+/* Botones destacados: tamaño y peso */
+.btn-comprar {
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+}
+.btn-eliminar {
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+}
+
+/* Hover: crecimiento sutil y fondo negro con texto acento */
+.boton-accion:hover,
+.eliminacionC:hover,
+.btn-comprar:hover,
+.btn-eliminar:hover {
+  transform: translateY(-4px) scale(1.04);
+  background: var(--color-negro);
+  color: var(--color-blanco);
+}
+
+/* Acciones finales del carrito (checkout / vaciar): estilo coherente) */
+.carrito-accion {
+  width: 100%;
+  display: flex;
+  gap: 0.75rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Resumen/total */
+.carrito-resumen {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.carrito-acciones-IT {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 120px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.008));
+  border: 1px solid rgba(255,255,255,0.02);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.12);
+}
+
+/* Texto del importe principal */
+.carrito-acciones-IT .importe-label {
+  font-size: 0.85rem;
+  color: var(--color-secundario);
+}
+
+.carrito-acciones-IT .importe-valor {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primario);
+  letter-spacing: 0.5px;
+}
+
+/* Panel para botones y controles (IP) */
+.carrito-acciones-IP {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* Botón eliminar-todo: más visible pero sobrio */
+.btn-eliminar-todo,
+button.btn-eliminar-todo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 0, 79, 0.16);
+  background: linear-gradient(180deg, rgba(255,0,79,0.06), rgba(255,0,79,0.03));
+  color: var(--color-black);
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(.2,.9,.3,1), 
+              box-shadow 180ms ease, 
+              background 160ms ease, 
+              color 160ms ease;
+  box-shadow: 0 6px 18px rgba(255,0,79,0.06);
+  font-weight: 700;
+  text-transform: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Icon dentro del botón */
+.btn-eliminar-todo .icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: inline-grid;
+  place-items: center;
+  background: rgba(0,0,0,0.12);
+  color: var(--color-blanco);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* Hover / Focus / Active — contraste fuerte indicando acción destructiva */
+.btn-eliminar-todo:hover,
+.btn-eliminar-todo:focus,
+button.btn-eliminar-todo:hover,
+button.btn-eliminar-todo:focus {
+  transform: translateY(-3px) scale(1.04);
+  background: var(--color-negro);
+  color: var(--color-blanco);
+  box-shadow: 0 14px 36px rgba(255,0,79,0.14), 0 4px 8px rgba(0,0,0,0.35);
+  border-color: rgba(255,0,79,0.22);
+  outline: none;
+}
+
+/* Estado activo/press: feedback táctil inmediato */
+.btn-eliminar-todo:active,
+button.btn-eliminar-todo:active {
+  transform: translateY(-1px) scale(0.995);
+  box-shadow: 0 8px 20px rgba(255,0,79,0.10);
+}
+
+/* Focus-visible accesible (teclado) */
+.btn-eliminar-todo:focus-visible,
+button.btn-eliminar-todo:focus-visible {
+  outline: 3px solid rgba(255,0,79,0.12);
+  outline-offset: 2px;
+}
+
+/* Version "deshabilitado" si necesitas bloquear la acción */
+.btn-eliminar-todo[disabled],
+button.btn-eliminar-todo[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Fondo difuminado detrás de la tarjeta ampliada */
+.overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0.6rem);
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tarjeta ampliada */
+.card-ampliada {
+  width: 55%;
+  max-width: 320px;
+  background: var(--color-blanco);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.28);
+  padding: 1.5rem;
+  z-index: 1000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 360ms cubic-bezier(.2,.9,.3,1) forwards;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Imagen */
+.card-ampliada img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+
+/* Título (si existe) */
+.card-ampliada h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-primario);
+  letter-spacing: 0.2px;
+}
+
+/* Descripción más visible: tamaño, interlineado y contraste */
+.card-ampliada small {
+  display: block;
+  font-size: 0.98rem;        /* aumentado para legibilidad */
+  line-height: 1.5;         /* mayor espaciado para lectura */
+  color: rgba(0,0,0,0.72);  /* contraste suave pero legible */
+  text-align: left;
+  width: 100%;
+  max-height: 6.5rem;       /* limita alto para mantener la tarjeta compacta */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  hyphens: auto;
+}
+
+/* Contenedor de acciones (alineación consistente) */
+.card-ampliada .actions {
+  width: 100%;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Botón: ahora armoniza con el resto de botones (pill, elevación y color de acento) */
+.card-ampliada button {
+  padding: 0.6rem 1rem;
+  font-size: 0.98rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--color-acento);
+  color: var(--color-blanco);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(.2,.9,.3,1), box-shadow 180ms ease, background 160ms ease;
+  box-shadow: 0 8px 22px rgba(2,6,23,0.14);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botón secundario (if you have an outline button inside the card) */
+.card-ampliada .btn-outline {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  color: rgba(0,0,0,0.8);
+  font-weight: 700;
+  box-shadow: none;
+}
+
+/* Hover / focus states */
+.card-ampliada button:hover,
+.card-ampliada button:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 46px rgba(2,6,23,0.16);
+  outline: none;
+}
+
+/* Icono dentro del botón (mantener compatibilidad con .add-card .icono-boton) */
+.card-ampliada .add-card .icono-boton {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: none;
+  transition: transform 180ms ease, filter 180ms ease;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Hover icono */
+.card-ampliada .add-card:hover .icono-boton {
+  transform: translateY(-2px);
+  filter: brightness(0) invert(1);
+}
+
+/* Animación: entrada sutil desde abajo hacia arriba */
+@keyframes slideUp {
+  0% {
+    transform: translateY(18px) scale(0.995);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-6px) scale(1.002);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* Contenedor principal */
+.top-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centra todo horizontalmente */
+  justify-content: flex-start;
+  text-align: center;      /* texto centrado por defecto */
+  margin: 1.6rem auto;
+  max-width: 1000px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* H2 adaptable y centrado */
+.top-wrapper h2 {
+  margin: 0 0 1rem;
+  font-weight: 600;
+  color: var(--color-primario);
+  line-height: 1.06;
+  font-size: clamp(1rem, 2.6vw + 0.2rem, 1.4rem); /* fluido y limitado */
+  width: 100%;
+  max-width: 720px;        /* evita que sea demasiado ancho en pantallas grandes */
+  word-break: break-word;
+}
+
+
+
+/* Track del carrusel: fila horizontal que se desplaza suavemente */
+.carrusel-top {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  /* animación suave, duración más lenta y easing suave */
+  animation: scroll-left 36s linear infinite;
+}
+
+/* Elemento / tarjeta */
+.carrusel-item {
+  flex: 0 0 220px;               /* ancho fijo por tarjeta */
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+  text-align: center;
+  padding: 0.6rem;
+  transition: transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Hover sutil para destacar sin romper la estética */
+.carrusel-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.10);
+}
+
+/* Imagen dentro de la tarjeta */
+.carrusel-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+
+
+/* Ranking / etiqueta: quitar azul, usar color de acento neutro */
+.ranking-txt {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65); /* neutro, elegante */
+  margin-top: 0.25rem;
+}
+
+/* Animación continua tipo marquee (duplicar items en HTML para fluidez) */
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* conservar duplicado de items en markup */
+}
+
+/* Reducción de velocidad en hover (si quieres pausar al pasar el ratón) */
+.carrusel-top:hover {
+  animation-play-state: paused;
+}
+.carrusel-item p {
+  margin: 0.5rem 0 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.ranking-txt {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+
+
+
+
+/*CSS PARA EL FORMULARIO DE SOLICITUDES */
+
+/* Contenedor y secciones */
+#wishlistModal, .wishlist-section { width: 100%; box-sizing: border-box; }
+
+/* Formulario - reutiliza .carrito-productos pero compacta y con inputs visibles */
+.wishlist-form { gap: 0.5rem; align-items: stretch;align-content: space-between; padding: 0.8rem; }
+.wishlist-img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: #f2f2f2; }
+
+
+.carrito-productos-deseos {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 0.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.025);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+/* Inputs y textarea adaptados al estilo visual del carrito */
+.wishlist-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  color: inherit;
+  outline: none;
+}
+.wishlist-textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: inherit;
+  resize: vertical;
+  min-height: 56px;
+  outline: none;
+}
+
+/* Botones: reutilizan .boton-accion pero con identificadores específicos */
+.btn-enviar { padding: 0.7rem 0.9rem; border-radius: 28px; min-width: 140px; }
+.btn-eliminar { padding: 0.6rem 0.8rem; border-radius: 8px; }
+
+/* Estilo de un item enviado (visual similar al carrito) */
+.wishlist-item { align-items: center; gap: 0.8rem; padding: 0.8rem; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); background: var(--color-blanco); }
+.wishlist-img-sent { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; background: linear-gradient(135deg,#e6ffe6,#f0fff4); }
+
+/* Meta y badge (indica enviado) */
+.wishlist-meta { display: flex; gap: 0.6rem; align-items: center; margin-left: auto; }
+.sent-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  background: #28a745;
+  color: #fff;
+  font-size: 0.78rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(40,167,69,0.12);
+}
+
+/* Gatito pixel art: animación automática de pequeños saltitos */
+#gatito {
+  display: inline-block;
+  width: 96px;                /* adapta según tu asset */
+  height: 96px;               /* adapta según tu asset */
+  image-rendering: pixelated; /* preserva el efecto pixel art */
+  transform-origin: 50% 70%;  /* punto de pivote cerca de las patas */
+  will-change: transform, filter;
+  animation: gatito-jump 1400ms steps(1, end) infinite;
+  /* un ligero brillo/contraste alternante para acentuar "pixel feel" */
+  filter: contrast(1) saturate(0);
+}
+
+/* Pequeño rebote de sombra para dar sensación de peso */
+#gatito::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 6px;
+  margin: 6px auto 0;
+  background: rgba(0,0,0,0.16);
+  border-radius: 50%;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: gatito-shadow 1400ms steps(1, end) infinite;
+}
+
+/* Keyframes: movimientos discretos (pixel-like) */
+@keyframes gatito-jump {
+  0%   { transform: translateY(0) rotate(0) scale(1); filter: contrast(1) saturate(0); }
+  10%  { transform: translateY(-4px) rotate(-2deg) scale(1.02); filter: contrast(1.02) saturate(0); }
+  20%  { transform: translateY(0) rotate(0) scale(1); filter: contrast(1) saturate(0); }
+  30%  { transform: translateY(-2px) rotate(1deg) scale(1.01); filter: contrast(1.01) saturate(0); }
+  40%  { transform: translateY(0) rotate(0) scale(1); filter: contrast(1) saturate(0); }
+  100% { transform: translateY(0) rotate(0) scale(1); filter: contrast(1) saturate(0); }
+}
+
+/* Sombra sincronizada que se aplana y se hace más tenue al saltito */
+@keyframes gatito-shadow {
+  0%   { transform: scaleX(1) translateY(0); opacity: 0.16; }
+  10%  { transform: scaleX(0.6) translateY(2px); opacity: 0.08; }
+  20%  { transform: scaleX(1) translateY(0); opacity: 0.16; }
+  30%  { transform: scaleX(0.8) translateY(1px); opacity: 0.12; }
+  40%  { transform: scaleX(1) translateY(0); opacity: 0.16; }
+  100% { transform: scaleX(1) translateY(0); opacity: 0.16; }
+}
+
+/* Opcional: pausa la animación si el usuario hace prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  #gatito,
+  #gatito::after {
+    animation: none;
+  }
+}
+
+
+
+
+
+
+/* ===========================
+   Estilos principales (móvil / tablet)
+   =========================== */
+
+@media screen and (max-width: 1024px) {
+  /* Estructura general */
+  .wrapper,
+  .wrapper1 {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .container,
+  .main-container {
+    width: 95%;
+    padding: 1rem;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Galería de productos */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .content {
+    transform: scale(1);
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .content:hover {
+    box-shadow: 0 0 6px var(--color-secundario),
+                0 20px 30px var(--color-primario);
+  }
+
+  .tarjeta-Costo {
+    gap: 10px;
+    padding: 1rem 0.5rem;
+  }
+
+  .tarjeta-Costo h3 {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .add-card {
+    font-size: 1.2em;
+    padding: 0.8rem;
+    border: 1px solid var(--color-primario);
+    background: var(--color-blanco);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .add-card:hover {
+    background: var(--color-negro);
+    color: var(--color-blanco);
+    border: solid .2px var(--color-blanco);
+  }
+
+  /* Menú lateral con efecto blur */
+  /* Contenedor interno del menú mantiene padding original pero más compacto */
+  .menu-h-container,
+  .menuhcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 1rem 0.8rem;
+    box-sizing: border-box;
+  }
+
+  /* Panel del menú: compacto, con scroll interno, mantiene alineación centrada */
+  .menuHamb,
+  .menuHamb-activo {
+    width: min(92vw, 420px);
+    max-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(0.2rem);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+
+  /* Mostrar solo cuando está activo (tu lógica sigue igual) */
+  .menuHamb-activo {
+    display: flex;
+  }
+
+  /* Restauramos exactamente el estilo del botón de abrir menú que prefieres */
+  .boton-menu,
+  .boton-menu-a {
+    width: 10%;
+    position: static;
+    background: var(--color-blanco);
+    z-index: 1000;
+  }
+
+  .header_nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Carrito */
+  .carrito-productos {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .carrito-img {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .carrito-text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .carrito-accion {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .boton-accion,
+  .eliminacionC {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .boton-accion:hover,
+  .eliminacionC:hover {
+    background: var(--color-negro);
+    color: var(--color-blanco);
+  }
+
+  /* Notificaciones */
+  .contenedor-notificaciones {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 90%;
+    z-index: 9999;
+  }
+
+  .notificacion {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    backdrop-filter: blur(0.4rem);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 6px var(--color-secundario),
+                0 20px 30px var(--color-primario);
+  }
+
+  .notif-txt {
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
+
+  .top-wrapper {
+    margin: 1.2rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .top-wrapper h2 {
+    font-size: clamp(0.98rem, 3.6vw, 1.2rem);
+    margin-bottom: 0.8rem;
+  }
+
+  /* Asegura que el carrusel no empuje el título en pantallas pequeñas */
+  .carrusel-top {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ===========================
+   CSS ADAPTADO A MOVILES PARA LISTA DE DESEOS
+   =========================== */
+
+.wishlist-img { width: 64px; height: 64px; }
+.wishlist-img-sent { width: 56px; height: 56px; }
+.wishlist-form { padding: 0.6rem; }
+.wishlist-input { font-size: 0.98rem; }
+.wishlist-textarea { font-size: 0.92rem; min-height: 48px; }
+.btn-enviar { min-width: 120px; padding: 0.6rem; }
+
+/* Accesibilidad y foco */
+.wishlist-input:focus,
+.wishlist-textarea:focus,
+.btn-enviar:focus,
+.btn-eliminar:focus {
+  outline: 3px solid rgba(34,150,243,0.14);
+  outline-offset: 2px;
+}
+
+
+
+
+/* ===========================
+   Estilos principales (móvil / tablet)
+   =========================== */
+
+@media screen and (max-width: 1024px) {
+  /* Estructura general */
+  .wrapper,
+  .wrapper1 {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .container,
+  .main-container {
+    width: 95%;
+    padding: 1rem;
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Galería de productos */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .content {
+    transform: scale(1);
+    transform-origin: center top;
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease, transform 0.18s ease;
+    padding: 0.9rem;
+    box-sizing: border-box;
+  }
+
+  .content:hover {
+    box-shadow: 0 0 6px var(--color-secundario),
+                0 20px 30px var(--color-primario);
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  .tarjeta-Costo {
+    gap: 10px;
+    padding: 1rem 0.5rem;
+  }
+
+  .tarjeta-Costo h3 {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .add-card {
+    font-size: 1.2em;
+    padding: 0.8rem;
+    border: 1px solid var(--color-primario);
+    background: var(--color-blanco);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .add-card:hover {
+    background: var(--color-negro);
+    color: var(--color-blanco);
+    border: solid .2px var(--color-blanco);
+  }
+
+  /* Menú lateral con efecto blur */
+  .menu-h-container,
+  .menuhcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 1rem 0.8rem;
+    box-sizing: border-box;
+  }
+
+  .menuHamb,
+  .menuHamb-activo {
+    width: min(92vw, 420px);
+    max-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(0.2rem);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+
+  .menuHamb-activo {
+    display: flex;
+  }
+
+  .boton-menu,
+  .boton-menu-a {
+    width: 10%;
+    position: static;
+    background: var(--color-blanco);
+    z-index: 1000;
+  }
+
+  .header_nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Carrito */
+  .carrito-productos {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .carrito-img {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .carrito-text {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .carrito-accion {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .boton-accion,
+  .eliminacionC {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .boton-accion:hover,
+  .eliminacionC:hover {
+    background: var(--color-negro);
+    color: var(--color-blanco);
+  }
+
+  /* Notificaciones */
+  .contenedor-notificaciones {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 90%;
+    z-index: 9999;
+  }
+
+  .notificacion {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    backdrop-filter: blur(0.4rem);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 6px var(--color-secundario),
+                0 20px 30px var(--color-primario);
+  }
+
+  .notif-txt {
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
+
+  .top-wrapper {
+    margin: 1.2rem auto;
+    padding: 0 0.75rem;
+  }
+
+  .top-wrapper h2 {
+    font-size: clamp(0.98rem, 3.6vw, 1.2rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .carrusel-top {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ===========================
+   CSS ADAPTADO A MOVILES PARA LISTA DE DESEOS
+   =========================== */
+
+.wishlist-img { width: 64px; height: 64px; }
+.wishlist-img-sent { width: 56px; height: 56px; }
+.wishlist-form { padding: 0.6rem; }
+.wishlist-input { font-size: 0.98rem; }
+.wishlist-textarea { font-size: 0.92rem; min-height: 48px; }
+.btn-enviar { min-width: 120px; padding: 0.6rem; }
+
+/* Accesibilidad y foco */
+.wishlist-input:focus,
+.wishlist-textarea:focus,
+.btn-enviar:focus,
+.btn-eliminar:focus {
+  outline: 3px solid rgba(34,150,243,0.14);
+  outline-offset: 2px;
+}
+
+/* ===========================
+   Ajustes para pantallas muy pequeñas manteniendo tarjetas completas
+   =========================== */
+
+/* <= 480px: reducir escala de tarjetas (mantener contenido íntegro) */
+@media screen and (max-width: 480px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  /* Reducir escala pero mantener padding y proporción para que todo se vea completo */
+  .content {
+    transform: scale(0.86);
+    transform-origin: center top;
+    padding: 0.9rem;
+    border-radius: 10px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.18s ease;
+  }
+
+  .content:hover {
+    transform: translateY(-3px) scale(0.88);
+  }
+
+  /* Ajustes visuales: mantener tamaños de texto pero reducir ligeramente */
+  .tarjeta-Costo {
+    padding: 0.9rem 0.6rem;
+    gap: 8px;
+  }
+
+  .tarjeta-Costo h3 {
+    min-height: 2.8rem;
+    font-size: 1rem;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.15;
+  }
+
+  /* Imagen: no estirar, limitar tamaño para mantener proporción */
+  .content img,
+  .tarjeta-Costo img {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0.35rem auto;
+  }
+
+  /* Texto y botones mantienen legibilidad, ligeramente más pequeños */
+  .tarjeta-Costo p,
+  .tarjeta-Costo .precio,
+  .tarjeta-Costo .descripcion {
+    font-size: 0.92rem;
+  }
+
+  .add-card {
+    font-size: 1.05rem;
+    padding: 0.62rem;
+    border-radius: 28px;
+  }
+
+  /* Mantener proporción visual sin recortar contenido */
+  .cards .content {
+    aspect-ratio: 3.8 / 5;
+  }
+}
+
+/* <= 360px: reducir escala adicional sin compactar */
+@media screen and (max-width: 360px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .content {
+    transform: scale(0.78);
+    transform-origin: center top;
+    padding: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .tarjeta-Costo h3 {
+    min-height: 2.4rem;
+    font-size: 0.95rem;
+  }
+
+  .content img,
+  .tarjeta-Costo img {
+    max-width: 140px;
+  }
+
+  .tarjeta-Costo p,
+  .tarjeta-Costo .precio,
+  .tarjeta-Costo .descripcion {
+    font-size: 0.88rem;
+  }
+
+  .add-card {
+    font-size: 0.98rem;
+    padding: 0.5rem;
+  }
+
+  /* Para pantallas extremadamente estrechas, permitir que las tarjetas ocupen 100% cuando sea necesario */
+  @media (max-width: 320px) {
+    .cards {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+    .content {
+      transform: scale(0.9);
+      aspect-ratio: auto;
+    }
+  }
+}
+
+/* ===========================
+   Estilos base para overlay y tarjeta ampliada (sugeridos)
+   =========================== */
+
+.overlay-blur {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(0,0,0,0.45);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.card-ampliada {
+  background: var(--color-blanco, #fff);
+  color: var(--color-negro, #000);
+  max-width: min(720px, 96vw);
+  width: 100%;
+  border-radius: 12px;
+  padding: 1.1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.card-ampliada-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===========================
+   Fin de archivo
+   =========================== */
+
+
+
+
+
+
+
+
+
+
